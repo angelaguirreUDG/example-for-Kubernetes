@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-rest-api-deployment
+  labels:
+    app: movie-rest-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: movie-rest-api
+  template:
+    metadata:
+      labels:
+        app: movie-rest-api 
+    spec:
+      containers:
+      - name: nodeserver
+        image: angelaguirreudg/movie-rest-api:latest
+        ports:
+        - containerPort: 3000
